@@ -1,0 +1,5 @@
+Hello {{name}}!
+{{xyz}}
+{% for event in events %}
+{{ event.name }} -- {{event.created_at|date("Y-m-d")}}
+{% endfor %}

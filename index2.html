@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Accueil</title>
+        <script src="assets/js/jquery.js"></script>
+    </head>
+    <body>
+
+    <table>
+        <thead>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Crée le</th>
+        <th>Action</th>
+        </thead>
+        <tbody id="event_body">
+
+        </tbody>
+    </table>
+    <form>
+        <input type="text" name="name" placeholder="name" id="name" /><br />
+        <input type="text" name="max_place" placeholder="max_place" id="max_place" />
+        <br />
+        <input type="text" name="topic_id" id="topic_id" placeholder="topic id" />
+        <br ><button type="button" id="event_add">Ajouter un evenement</button>
+    </form>
+    </body>
+    <script>
+        function addEvent(){
+            $.ajax({
+                url: 'index.php?events',
+                type: 'post',
+                data: {
+                    name: $('#name').val(),
+                    topic_id: $('#topic_id').val(),
+                    max_place: $('#max_place').val()
+                }
+            })
+        }
+
+        function displayEvents(){
+            $.ajax({
+                url: 'index.php?events'
+            }).done(function(result){
+                var events = result;
+                var eventHtml = "";
+                events.forEach(function(event){
+                    eventHtml += "<tr><td>"
+                        + event.id
+                        + "</td><td>"
+                        + event.name
+                        + "</td><td>"
+                        + event.created_at
+                        + "</td><td>" +
+                        "" +
+                        "<button>supprimer</button> <button type='button'>Detail </button></td></tr>";
+                })
+                //document.getElementById("event_body").innerHTML = eventHtml;
+                $('#event_body').html(eventHtml);
+                ;
+            });
+        }
+        $('#event_add').on('click', function(){
+            addEvent();
+        })
+        displayEvents();
+        /*
+        var req = new XMLHttpRequest();
+        req.open('GET', 'index.php?module=event&action=search');
+        req.send();
+        req.onload = function (result) {
+            var events = JSON.parse(result.target.response);
+            var eventHtml = "";
+            events.forEach(function(event){
+                eventHtml += "<tr><td>"
+                    + event.id
+                    + "</td><td>"
+                    + event.name
+                    + "</td><td>"
+                    + event.created_at
+                    + "</td></tr>";
+            })
+            document.getElementById("event_body").innerHTML = eventHtml
+            ;
+        }*/
+    </script>
+</html>

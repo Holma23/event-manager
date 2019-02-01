@@ -1,0 +1,38 @@
+[
+  {
+    "uri": "default",
+    "verb": "get",
+    "module": "default",
+    "action": "notfound"
+  },
+  {
+    "uri": "events",
+    "verb": "get",
+    "module": "event",
+    "action": "search"
+  },
+  {
+    "uri": "events/*",
+    "verb": "get",
+    "module": "event",
+    "action": "detail"
+  },
+  {
+    "uri": "events",
+    "verb": "post",
+    "module": "event",
+    "action": "add"
+  },
+  {
+    "uri": "events",
+    "verb": "put",
+    "module": "event",
+    "action": "update"
+  },
+  {
+    "uri": "events",
+    "verb": "delete",
+    "module": "event",
+    "action": "delete"
+  }
+]

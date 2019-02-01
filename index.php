@@ -1,2 +1,5 @@
 <?php
-echo "hello hugecoders edited";
+
+require ('vendor/autoload.php');
+require ('autoload.php');
+require ('routage.php');
