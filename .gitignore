@@ -1,3 +1,5 @@
 /caches/
 /vendor/
+/.idea/
+/assets/upload
 /composer.lock
